@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comfort, Cooked — A Guide to Home Comfort Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2E2620;
+    --paper:#F6EFE4;
+    --paper-deep:#EBE0CC;
+    --rust:#7C4A2D;
+    --rust-deep:#402512;
+    --amber:#D98E2B;
+    --sage:#5C6B4C;
+    --line:#DCCCA9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Nunito Sans', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+  }
+  h1,h2,h3,.display{
+    font-family:'Lora', serif;
+    color:var(--rust-deep);
+    font-weight:500;
+    line-height:1.15;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .prose{max-width:640px;}
+
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(246,239,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Lora',serif;font-size:20px;color:var(--rust-deep);}
+  .navlinks{display:flex;gap:28px;font-size:14px;}
+  .navlinks a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+  .navlinks a:hover{border-bottom-color:var(--amber);}
+  @media (max-width:760px){.navlinks{display:none;}}
+
+  .hero{position:relative;height:86vh;min-height:560px;overflow:hidden;}
+  .hero img{filter:saturate(1.02) brightness(0.68);}
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(64,37,18,0.15) 0%, rgba(64,37,18,0.55) 78%, rgba(64,37,18,0.82) 100%);
+    display:flex;align-items:flex-end;
+  }
+  .hero-content{padding:0 32px 64px;max-width:1180px;margin:0 auto;width:100%;}
+  .hero h1{color:#F6EFE4;font-size:clamp(34px,5.2vw,62px);max-width:15ch;}
+  .hero p{color:#E5D6BC;max-width:48ch;margin-top:18px;font-size:18px;}
+
+  section{padding:96px 0;}
+  section.tight{padding:72px 0;}
+  .kicker{font-size:14px;color:var(--amber);margin-bottom:14px;}
+  h2{font-size:clamp(28px,3.3vw,38px);margin-bottom:22px;}
+  h2.wide{max-width:20ch;}
+  p{margin:0 0 16px;}
+  .lede{font-size:19px;color:#4C4230;}
+
+  hr.rule{border:none;border-top:1px solid var(--line);margin:0;}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .split .figure{aspect-ratio:4/5;overflow:hidden;background:var(--paper-deep);}
+  .split.reverse .figure{order:2;}
+  @media (max-width:860px){
+    .split{grid-template-columns:1fr;gap:32px;}
+    .split .figure{order:0 !important;aspect-ratio:16/10;}
+  }
+
+  .band{position:relative;height:56vh;min-height:380px;}
+
+  /* WHY GRID */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:12px;}
+  .why-cell{background:var(--paper);padding:34px 28px;}
+  .why-cell .num{font-family:'Lora',serif;font-size:14px;color:var(--sage);margin-bottom:10px;}
+  .why-cell h3{font-size:19px;margin-bottom:8px;}
+  .why-cell p{font-size:14.5px;color:#4C4230;margin:0;}
+  @media (max-width:760px){.why-grid{grid-template-columns:1fr;}}
+
+  /* DISH LIST BY COUNTRY */
+  .dish-row{display:grid;grid-template-columns:210px 1fr;gap:36px;padding:26px 0;border-top:1px solid var(--line);}
+  .dish-row:last-child{border-bottom:1px solid var(--line);}
+  .dish-row h3{font-size:18px;margin-bottom:6px;color:var(--rust-deep);}
+  .dish-row .tag{font-size:12.5px;color:var(--amber);letter-spacing:0.2px;}
+  .dish-row p{font-size:15px;color:#4C4230;margin:0;}
+  @media (max-width:640px){.dish-row{grid-template-columns:1fr;gap:6px;}}
+
+  /* MAKEOVER TABLE */
+  .swap-block{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;}
+  @media (max-width:860px){.swap-block{grid-template-columns:1fr;}}
+  .swap-list .item{padding:18px 0;border-top:1px solid var(--line);}
+  .swap-list .item:last-child{border-bottom:1px solid var(--line);}
+  .swap-list h4{font-family:'Lora',serif;font-weight:500;font-size:16.5px;margin:0 0 6px;}
+  .swap-list p{font-size:14.5px;color:#4C4230;margin:0;}
+  .swap-list .from-to{font-size:12.5px;color:var(--sage);margin-top:6px;}
+
+  .myth{padding:26px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1.6fr;gap:24px;}
+  .myth:last-child{border-bottom:1px solid var(--line);}
+  .myth .claim{font-family:'Lora',serif;font-size:18px;color:var(--amber);}
+  .myth .fact{font-size:15px;color:#4C4230;}
+  @media (max-width:700px){.myth{grid-template-columns:1fr;gap:8px;}}
+
+  footer{background:var(--rust-deep);color:#E3D3B7;padding:64px 0 40px;margin-top:40px;}
+  footer .wrap{display:flex;flex-direction:column;gap:8px;}
+  footer h2{color:#F6EFE4;font-size:26px;max-width:22ch;}
+  footer p{color:#C4AF8B;max-width:60ch;font-size:14px;}
+  footer .fine{margin-top:36px;font-size:12px;color:#8A7458;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Comfort, Cooked</div>
+    <div class="navlinks">
+      <a href="#why">Why it comforts</a>
+      <a href="#world">Around the world</a>
+      <a href="#makeover">Lighter takes</a>
+      <a href="#myths">Myths</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1800&auto=format&fit=crop" alt="A bowl of warm homemade stew on a rustic wooden table">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Why some meals feel like coming home</h1>
+      <p>Comfort food isn't a category of ingredients — it's a category of memory. A look at what actually makes a dish comforting, and how the idea shows up differently around the world.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="why" class="tight">
+    <div class="wrap">
+      <div class="prose">
+        <div class="kicker">The underlying idea</div>
+        <h2 class="wide">Comfort food is defined by memory, not by nutrition label</h2>
+        <p class="lede">Researchers who study eating behavior describe comfort food less by what's in it and more by what it's tied to: a specific person, place, or moment from earlier in life. A dish someone's grandmother made becomes comforting for that reason alone, regardless of whether it's a stew, a soup, or a plate of noodles.</p>
+        <p>That's why comfort food differs so much by household and country. There's no universal comfort dish — only a universal feeling that certain foods reliably produce.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="split">
+        <div class="figure">
+          <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=1400&auto=format&fit=crop" alt="Creamy mashed potatoes with butter melting on top">
+        </div>
+        <div>
+          <div class="kicker">What the studies find</div>
+          <h2>The psychology behind the craving</h2>
+          <p>Comfort eating is strongly linked to seeking familiarity during stress, loneliness, or change — the food acts as a stand-in for social connection. Studies on the topic have found that thinking about a comfort food can reduce feelings of loneliness in the same way recalling a supportive relationship does.</p>
+          <p>Texture and temperature matter too. Warm, soft, and slightly sweet or salty foods are consistently rated as more comforting than cold or crunchy ones — likely tied back to the softness of foods fed to us as infants and young children.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?q=80&w=1800&auto=format&fit=crop" alt="A steaming bowl of soup with bread on the side">
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="prose" style="max-width:720px;">
+        <div class="kicker">Three ingredients, roughly</div>
+        <h2 class="wide">What most comfort dishes have in common</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-cell">
+          <div class="num">Softness</div>
+          <h3>Easy to eat</h3>
+          <p>Mashed, stewed, or baked until tender — comfort dishes rarely ask much of the jaw. Low effort eating reads, subconsciously, as low effort care.</p>
+        </div>
+        <div class="why-cell">
+          <div class="num">Warmth</div>
+          <h3>Served hot</h3>
+          <p>Heat is strongly associated with safety and shelter across cultures — one reason soups, stews, and baked dishes dominate comfort-food lists worldwide.</p>
+        </div>
+        <div class="why-cell">
+          <div class="num">History</div>
+          <h3>Tied to someone</h3>
+          <p>The most comforting version of a dish is rarely the most technically refined one — it's the one closest to how it was first made for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="split reverse">
+        <div class="figure">
+          <img src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?q=80&w=1400&auto=format&fit=crop" alt="A tray of golden baked macaroni and cheese">
+        </div>
+        <div>
+          <div class="kicker">A closer look</div>
+          <h2>Why fat, salt, and starch keep showing up</h2>
+          <p>Comfort dishes lean heavily on fat, salt, and refined carbohydrates for a physiological reason as much as a cultural one — these combinations trigger the brain's reward pathways more strongly than any single element alone, which is part of why mac and cheese, mashed potatoes, and fried dishes recur across so many different food cultures.</p>
+          <p>None of this makes comfort food "bad" — occasional, enjoyed food is part of a balanced relationship with eating. The dishes simply aren't designed around nutrition first; they're designed around feeling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section id="world">
+    <div class="wrap">
+      <div class="prose" style="max-width:720px;">
+        <div class="kicker">Same feeling, different plate</div>
+        <h2 class="wide">Comfort food around the world</h2>
+        <p class="lede">Every food culture has its own version of "the dish you make when someone needs looking after."</p>
+      </div>
+
+      <div class="dish-row">
+        <div><h3>Chicken soup</h3><div class="tag">United States, Eastern Europe</div></div>
+        <p>Often the first thing made for someone who's sick or grieving — warm broth, soft noodles or rice, and a long simmer that fills the house with smell before the meal even starts.</p>
+      </div>
+      <div class="dish-row">
+        <div><h3>Congee</h3><div class="tag">China</div></div>
+        <p>Rice slow-cooked into a soft porridge, plain enough to eat when little else appeals — a staple comfort food for illness, infancy, and old age alike.</p>
+      </div>
+      <div class="dish-row">
+        <div><h3>Khichdi</h3><div class="tag">India</div></div>
+        <p>Rice and lentils cooked together into a soft, mild dish, often the first solid food given to babies and the go-to meal during recovery from illness.</p>
+      </div>
+      <div class="dish-row">
+        <div><h3>Bangers and mash</h3><div class="tag">United Kingdom</div></div>
+        <p>Sausages, mashed potato, and gravy — heavy, warm, and unfussy, built for cold weather rather than presentation.</p>
+      </div>
+      <div class="dish-row">
+        <div><h3>Sancocho</h3><div class="tag">Latin America &amp; Caribbean</div></div>
+        <p>A hearty stew of meat, root vegetables, and plantain, often simmered for hours and served as a Sunday, family-gathering dish.</p>
+      </div>
+      <div class="dish-row">
+        <div><h3>Okayu</h3><div class="tag">Japan</div></div>
+        <p>A soft rice porridge, close to congee, associated with being cared for while unwell — plain rice cooked down until gentle on the stomach.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1800&auto=format&fit=crop" alt="A hearty vegetable stew simmering in a pot">
+  </div>
+
+  <section id="makeover">
+    <div class="wrap">
+      <div class="prose" style="max-width:720px;margin-bottom:12px;">
+        <div class="kicker">Same comfort, lighter build</div>
+        <h2 class="wide">Small adjustments that keep the feeling, change the makeup</h2>
+        <p class="lede">Comfort food doesn't need to be avoided to eat well — a few common substitutions keep the texture and flavor people are actually craving while shifting the nutritional balance.</p>
+      </div>
+
+      <div class="swap-block">
+        <div class="figure" style="aspect-ratio:4/5;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?q=80&w=1200&auto=format&fit=crop" alt="A bowl of soup with vegetables and herbs">
+        </div>
+        <div class="swap-list">
+          <div class="item">
+            <h4>Mashed potatoes</h4>
+            <p>Blend in roasted cauliflower with the potato for the same creamy texture with fewer refined carbs, using less butter to compensate.</p>
+            <div class="from-to">Half potato, half cauliflower</div>
+          </div>
+          <div class="item">
+            <h4>Baked mac and cheese</h4>
+            <p>A roux made with a bit less cheese, backed up with nutritional yeast or a sharper aged cheese, keeps the flavor with less fat overall.</p>
+            <div class="from-to">Sharper cheese, smaller amount</div>
+          </div>
+          <div class="item">
+            <h4>Chicken soup</h4>
+            <p>Loading the pot with extra vegetables and using shredded chicken breast keeps the broth just as rich while adding fiber and lean protein.</p>
+            <div class="from-to">More vegetables, same broth</div>
+          </div>
+          <div class="item">
+            <h4>Fried chicken</h4>
+            <p>A buttermilk marinade plus a hot oven or air fryer gets a similarly crisp coating with a fraction of the oil.</p>
+            <div class="from-to">Oven-fried, same crust</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section id="myths">
+    <div class="wrap">
+      <div class="prose" style="max-width:720px;margin-bottom:8px;">
+        <div class="kicker">Second thoughts</div>
+        <h2 class="wide">A few assumptions about comfort food, checked</h2>
+      </div>
+
+      <div class="myth">
+        <div class="claim">"Comfort food is always unhealthy"</div>
+        <div class="fact">Plenty of traditional comfort dishes — chicken soup, khichdi, congee, vegetable stews — are simple, whole-food meals. The "unhealthy" reputation comes mostly from a narrower, heavily processed subset, not the category as a whole.</div>
+      </div>
+      <div class="myth">
+        <div class="claim">"Eating for comfort is a sign of poor willpower"</div>
+        <div class="fact">Seeking familiar food during stress is a well-documented, near-universal response tied to how the brain processes emotional regulation — not a personal failing. The concern is frequency and pattern, not the occasional instinct itself.</div>
+      </div>
+      <div class="myth">
+        <div class="claim">"Comfort food has to be indulgent to work"</div>
+        <div class="fact">What makes a dish comforting is its association with care and memory, not its calorie count — a plain bowl of rice porridge is, for many people, exactly as comforting as a dessert.</div>
+      </div>
+      <div class="myth">
+        <div class="claim">"Everyone's comfort food is roughly the same"</div>
+        <div class="fact">Because comfort is tied to personal history, it's one of the most individual categories of food there is — shaped entirely by what a specific household or culture made during childhood.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="split">
+        <div class="figure">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1400&auto=format&fit=crop" alt="A family style dinner table set with home cooked dishes">
+        </div>
+        <div>
+          <div class="kicker">The point of it</div>
+          <h2>Cooking as a form of care</h2>
+          <p>What ties every comfort dish together, across every country and household, isn't an ingredient — it's the act of someone taking the time to make it. That's the part worth keeping, whichever version of the dish ends up on the table: comfort food, at its core, is just food made with someone specific in mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Comfort food is a memory you can reheat.</h2>
+    <p>General background drawn from research on food-related emotional eating and cross-cultural comfort dish traditions. What's comforting varies by household — this page is a starting point, not a ranking.</p>
+    <div class="fine">Comfort, Cooked — an informational guide.</div>
+  </div>
+</footer>
+
+</body>
+</html>
